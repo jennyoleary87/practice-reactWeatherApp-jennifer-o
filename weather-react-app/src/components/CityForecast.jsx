@@ -1,21 +1,43 @@
 import { Link, useParams } from "react-router";
+import { useEffect, useState, useRef } from "react";
+import weatherData from "./WeatherData";
 
-const CityForecast = ({ allCities }) => {
+const CityForecast = () => {
     const { cityName } = useParams();
+    const [cityData, setCityData] = useState("");
+    const [loading, setLoading] = useState(true);
+    const detailsRef = useRef(null);
 
+    useEffect(() => {
+        // Simulate fetching weather data
+        setTimeout(() => {
+            setCityData(weatherData[cityName]);
+            setLoading(false);
+        }, 500);
+    }, [cityName]);
 
-
-    const [city] = [...allCities].filter(obj => obj.city == cityName);
-
+    const scrollToDetails = () => {
+        detailsRef.current.scrollIntoView({ behavior: "smooth" });
+    };
 
     return (
         <>
             <div>
-                <h2>{city.city}</h2>
-                <p>{city.summary}</p>
-                <p>{city.details}</p>
-
-                <Link to="/">Return to main page</Link>
+                {cityData ? (
+                    <>
+                        <h2>Weather in {cityName}</h2>
+                        <button onClick={scrollToDetails}>View Details</button>
+                        <div ref={detailsRef}>
+                            <p>{cityData.details}</p>
+                        </div>
+                        <Link to="/">Return to main page</Link>
+                    </>
+                ) : (
+                    <div>
+                        <p>Loading ...</p>
+                        <Link to="/">Return to main page</Link>
+                    </div>
+                )}
             </div>
         </>
     )

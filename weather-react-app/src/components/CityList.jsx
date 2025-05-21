@@ -1,25 +1,19 @@
 import { Link } from "react-router";
 import weatherData from "./WeatherData";
 
-
 const CityList = () => {
-
-    const allCities = weatherData.map(city => (
-        { ...city }
-    ))
+    const cities = Object.keys(weatherData);
 
     return (
         <div>
-            <h1>List of cities:</h1>
-
-            <div>
+            <h1>LIST OF CITIES:</h1>
+            <br /> <br />
+            <div id="city-list">
                 <ul>
-                    {allCities.map((city, index) => (
-                        <div>
-                            <li key={index}>
-                                <Link to={`/forecast/${city.city}`}>{city.city}</Link>
-                            </li>
-                        </div>
+                    {cities.map((city) => (
+                        <li key={city}>
+                            <Link to={`/forecast/${city}`}>{city}</Link>
+                        </li>
                     ))}
                 </ul>
             </div>
