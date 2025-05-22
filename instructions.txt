@@ -1,0 +1,61 @@
+Practice: React Weather App
+===== INSTRUCTIONS =====
+You will create a React application where:
+1. The main page lists a few city options (e.g., "New York," "London," "Tokyo").
+2. Clicking on a city navigates to a forecast page using URL parameters
+(useParams).
+3. The forecast page fetches mock weather data for the selected city using
+useEffect.
+4. The application includes a button to scroll to the detailed weather section
+using useRef.
+This activity will help students combine and practice useEffect, useRef, and
+useParams.
+
+===== TASKS =====
+Step 1: Set Up the Application
+Install React Router: npm install react-router
+File Structure:
+    ● App.jsx: Main component to configure routes.
+    ● CityList.jsx: Component to list cities with links to the forecast page.
+    ● CityForecast.jsx: Component to display the forecast for the selected city.
+
+Step 2: Create Mock Weather Data
+Define mock data to simulate weather details:
+    const weatherData = {
+    NewYork: {
+    summary: "Sunny, 25°C",
+    details: "Clear skies throughout the day with mild
+    temperatures.",
+    },
+    London: {
+    summary: "Cloudy, 18°C",
+    details: "Overcast with occasional light rain in the afternoon.",
+    },
+    Tokyo: {
+    summary: "Rainy, 22°C",
+    details: "Continuous rain expected throughout the day.",
+    },
+    };
+
+Step 3: Create the CityList Component
+Display a list of cities with links to their forecast pages:
+    ● Each city links to /forecast/:cityName using Link from React Router.
+
+Step 4: Create the CityForecast Component
+    1. Extract the city name from the URL using useParams.
+    2. Use useEffect to simulate fetching the weather data for the selected city.
+    3. Use useRef to scroll to the detailed weather section when a "View Details" button is clicked.
+
+Step 5: Configure Routes in App.js
+Set up routes to display the city list at / and the forecast page at /forecast/:cityName.
+
+Extensions
+    ● Handle Invalid City Names:
+        Display a fallback message if the cityName parameter does not match any
+        city in weatherData.
+    ● Add a Back Button:
+        In CityForecast, add a button to navigate back to the city list:
+        import { Link } from "react-router";
+        <Link to="/">Back to City List</Link>
+    ● Style the Application:
+        Use CSS to improve the layout and appearance of the city list and forecast pages.

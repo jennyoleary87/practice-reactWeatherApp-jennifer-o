@@ -25,11 +25,14 @@ const CityForecast = () => {
             <div>
                 {cityData ? (
                     <>
-                        <h2>Weather in {cityName}</h2>
+                        <h1>Weather in {cityName}</h1>
+                        <br /><br />
                         <button onClick={scrollToDetails}>View Details</button>
+                        <br /><br />
                         <div ref={detailsRef}>
                             <p>{cityData.details}</p>
                         </div>
+                        <br /><br />
                         <Link to="/">Return to main page</Link>
                     </>
                 ) : (
